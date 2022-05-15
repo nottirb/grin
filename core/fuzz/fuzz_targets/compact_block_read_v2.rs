@@ -9,5 +9,5 @@ use grin_core::ser;
 fuzz_target!(|data: &[u8]| {
 	let mut d = data.clone();
 	let _t: Result<UntrustedCompactBlock, ser::Error> =
-		ser::deserialize(&mut d, ser::ProtocolVersion(2));
+		ser::deserialize(&mut d, ser::ProtocolVersion(2), ser::DeserializationMode::default());
 });
