@@ -1,0 +1,7 @@
+project: grin
+target: read_hand
+
+image: ghcr.io/nottirb/grin:latest
+
+cmds:
+    - cmd: /read_hand

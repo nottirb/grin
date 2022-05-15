@@ -10,7 +10,9 @@ env:
   BLOCKREADV1_MAYHEMFILE: mayhem/block_read_v1.mayhemfile
   BLOCKREADV2_MAYHEMFILE: mayhem/block_read_v2.mayhemfile
   COMPACTBLOCKREADV1_MAYHEMFILE: mayhem/compact_block_read_v1.mayhemfile
-  COMPACTBLOCKREADV2_MAYHEMFILE: mayhem/compact_block_read_v2.mayhemfile
+  READHAND_MAYHEMFILE: mayhem/read_hand.mayhemfile
+  READPEER_MAYHEMFILE: mayhem/read_peer.mayhemfile
+  READSHAKE_MAYHEMFILE: mayhem/read_shake.mayhemfile
 
 jobs:
   build:
@@ -71,11 +73,25 @@ jobs:
           args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.COMPACTBLOCKREADV1_MAYHEMFILE }} --duration 300
           sarif-output: sarif
 
-      - name: Start analysis for compact_block_read_v2
+      - name: Start analysis for read_hand
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.COMPACTBLOCKREADV2_MAYHEMFILE }} --duration 300
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.READHAND_MAYHEMFILE }} --duration 300
+          sarif-output: sarif
+
+      - name: Start analysis for read_peer
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.READPEER_MAYHEMFILE }} --duration 300
+          sarif-output: sarif
+
+      - name: Start analysis for read_shake
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ steps.meta.outputs.tags }} --file ${{ env.READSHAKE_MAYHEMFILE }} --duration 300
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
