@@ -9,5 +9,5 @@ use grin_p2p::msg::Ping;
 
 fuzz_target!(|data: &[u8]| {
 	let mut d = data.clone();
-	let _t: Result<Ping, ser::Error> = ser::deserialize(&mut d);
+	let _t: Result<Ping, ser::Error> = ser::deserialize(&mut d, ser::ProtocolVersion(1), ser::DeserializationMode::default());
 });
