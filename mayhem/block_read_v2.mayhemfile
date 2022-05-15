@@ -1,0 +1,7 @@
+project: grin
+target: block_read_v2
+
+# image: ghcr.io/nottirb/grin:latest
+
+cmds:
+    - cmd: /block_read_v2
