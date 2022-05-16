@@ -1,7 +1,7 @@
 project: grin
 target: read_shake
 
-image: ghcr.io/nottirb/grin:latest
+# image: ghcr.io/nottirb/grin:latest
 
 cmds:
     - cmd: /read_shake
